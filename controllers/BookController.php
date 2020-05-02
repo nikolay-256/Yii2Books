@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers\;
+namespace app\controllers;
 
 use Yii;
 use app\models\Book;
