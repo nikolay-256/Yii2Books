@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\Author;
 use Yii;
 use app\models\Book;
 use app\models\BookSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * BookController implements the CRUD actions for Book model.
@@ -72,6 +74,7 @@ class BookController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'authors' => ArrayHelper::map(Author::find()->all(), 'id', 'name'),
         ]);
     }
 
@@ -92,6 +95,7 @@ class BookController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'authors' => ArrayHelper::map(Author::find()->all(), 'id', 'name'),
         ]);
     }
 
