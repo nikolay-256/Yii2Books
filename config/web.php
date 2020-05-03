@@ -16,6 +16,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '4s_JHLvWbSWQKv82L-RPHBdXehtpIu8n',
+            'enableCsrfValidation' => false,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -51,6 +52,7 @@ $config = [
 		        'api/v1/books/list' => 'bookapi/list',
 		        'api/v1/books/<id:\d+>' => 'bookapi/view',
 		        'api/v1/books/update/<id:\d+>' => 'bookapi/update',
+		        'api/v1/books/delete/<id:\d+>' => 'bookapi/delete',
 	        ],
         ]
     ],
