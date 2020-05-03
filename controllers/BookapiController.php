@@ -106,7 +106,7 @@ class BookapiController extends Controller
 		$post = Yii::$app->request->post();
 		if (!array_intersect(array_keys($post), $fields_to_update)) {
 			$to_return['status'] = 'error';
-			$to_return['message'] = 'not updated';
+			$to_return['message'] = 'allowed update fields: '.implode(', ',$fields_to_update);
 
 			return json_encode($to_return);
 		}
