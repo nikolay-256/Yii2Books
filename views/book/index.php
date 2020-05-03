@@ -28,6 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			'columns'      => [
 				['class' => 'yii\grid\SerialColumn'],
 				'id',
+				'title',
+				[
+					'class'   => 'yii\grid\ActionColumn',
+					'visible' => !Yii::$app->user->isGuest,
+				],
 				[
 					'label'     => 'Author Id',
 					'attribute' => 'author_id',
@@ -37,11 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
 					'value' => function ($model) {
 						return $model->author->name;
 					},
-				],
-				'title',
-				[
-					'class'   => 'yii\grid\ActionColumn',
-					'visible' => !Yii::$app->user->isGuest,
 				],
 			],
 		]
