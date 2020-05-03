@@ -44,14 +44,15 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+	        'enablePrettyUrl' => true,
+	        'showScriptName' => false,
+	        'rules' => [
+		        'api/v1/books/list' => 'bookapi/list',
+		        'api/v1/books/<id:\d+>' => 'bookapi/view',
+		        'api/v1/books/update/<id:\d+>' => 'bookapi/update',
+	        ],
+        ]
     ],
     'params' => $params,
 ];
