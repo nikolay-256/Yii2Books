@@ -43,8 +43,7 @@ class Book extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'author_id' => 'Author ID',
-            'title' => 'Title',
+            'author_id' => 'Author',
         ];
     }
 
@@ -57,4 +56,5 @@ class Book extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Author::className(), ['id' => 'author_id']);
     }
+    
 }
