@@ -20,9 +20,8 @@ class BookapiController extends Controller
 				'class'   => VerbFilter::className(),
 				'actions' => [
 					'list'   => ['GET'],
-					'view'   => ['GET'],
+					'one'    => ['GET', 'DELETE'],
 					'update' => ['POST'],
-					'delete' => ['DELETE'],
 				],
 			],
 		];
@@ -31,33 +30,52 @@ class BookapiController extends Controller
 	/**
 	 * Get all books
 	 *
-	 * @return json
+	 * @return json:
+	 *             status=error/success,
+	 *             data=json
 	 */
 	public function actionList()
 	{
-		$to_return = [];
+		$to_return = ['status' => 'success', 'data' => []];
 		foreach (Book::find()->all() as $book) {
 			$book_row = $book->toArray();
 			$book_row['author_name'] = $book->author->name;
-			$to_return[] = $book_row;
+			$to_return['data'][] = $book_row;
 		}
 
 		return json_encode($to_return);
-
 	}
 
 	/**
-	 * Get book by id
+	 * View and delete actions for one book
 	 *
-	 * @return json
+	 * @return json:
+	 *             status=error/success,
+	 *             message=''
+	 *             data=json
 	 */
-	public function actionView($id)
+	public function actionOne($id)
 	{
-		$to_return = [];
+		$to_return = ['status' => 'error', 'message' => '', 'data' => []];
 		$book = Book::findOne($id);
-		if ($book) {
-			$to_return = $book->toArray();
-			$to_return['author_name'] = $book->author->name;
+		if (!$book) {
+			$to_return['status'] = 'error';
+			$to_return['message'] = 'not finded';
+
+			return json_encode($to_return);
+		}
+		if (Yii::$app->request->isGet) {
+			$to_return['status'] = 'success';
+			$to_return['data'] = $book->toArray();
+			$to_return['data']['author_name'] = $book->author->name;
+
+			return json_encode($to_return);
+		} elseif (Yii::$app->request->isDelete) {
+			$book->delete();
+			$to_return['status'] = 'success';
+			$to_return['message'] = 'ok';
+
+			return json_encode($to_return);
 		}
 
 		return json_encode($to_return);
@@ -93,30 +111,6 @@ class BookapiController extends Controller
 			return json_encode($to_return);
 		}
 		$book->load(['Book' => $post]) && $book->save();
-		$to_return['status'] = 'success';
-		$to_return['message'] = 'ok';
-
-		return json_encode($to_return);
-	}
-
-	/**
-	 * Delete book by id
-	 *
-	 * @return json:
-	 *             status=error/success,
-	 *             message=''
-	 */
-	public function actionDelete($id)
-	{
-		$to_return = [];
-		$book = Book::findOne($id);
-		if (!$book) {
-			$to_return['status'] = 'error';
-			$to_return['message'] = 'not finded';
-
-			return json_encode($to_return);
-		}
-		$book->delete();
 		$to_return['status'] = 'success';
 		$to_return['message'] = 'ok';
 

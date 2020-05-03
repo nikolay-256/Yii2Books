@@ -50,9 +50,8 @@ $config = [
 	        'showScriptName' => false,
 	        'rules' => [
 		        'api/v1/books/list' => 'bookapi/list',
-		        'api/v1/books/<id:\d+>' => 'bookapi/view',
+		        'api/v1/books/<id:\d+>' => 'bookapi/one',
 		        'api/v1/books/update/<id:\d+>' => 'bookapi/update',
-		        'api/v1/books/delete/<id:\d+>' => 'bookapi/delete',
 	        ],
         ]
     ],
