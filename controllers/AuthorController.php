@@ -64,6 +64,10 @@ class AuthorController extends Controller
      */
     public function actionCreate()
     {
+	    if(Yii::$app->user->isGuest)
+	    {
+		    return $this->redirect(Yii::$app->homeUrl);
+	    }
         $model = new Author();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +88,10 @@ class AuthorController extends Controller
      */
     public function actionUpdate($id)
     {
+	    if(Yii::$app->user->isGuest)
+	    {
+		    return $this->redirect(Yii::$app->homeUrl);
+	    }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -104,6 +112,10 @@ class AuthorController extends Controller
      */
     public function actionDelete($id)
     {
+	    if(Yii::$app->user->isGuest)
+	    {
+		    return $this->redirect(Yii::$app->homeUrl);
+	    }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

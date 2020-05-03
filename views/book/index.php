@@ -13,10 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="book-index">
 
 	<h1><?= Html::encode($this->title) ?></h1>
-
+	<?php if (!Yii::$app->user->isGuest): ?>
 	<p>
 		<?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
 	</p>
+	<?php endif; ?>
 
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -38,7 +39,10 @@ $this->params['breadcrumbs'][] = $this->title;
 					},
 				],
 				'title',
-				['class' => 'yii\grid\ActionColumn'],
+				[
+					'class'   => 'yii\grid\ActionColumn',
+					'visible' => !Yii::$app->user->isGuest,
+				],
 			],
 		]
 	); ?>
