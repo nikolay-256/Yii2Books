@@ -66,7 +66,7 @@ class AuthorController extends Controller
     {
 	    if(Yii::$app->user->isGuest)
 	    {
-		    return $this->redirect(Yii::$app->homeUrl);
+		    throw new \yii\web\ForbiddenHttpException();
 	    }
         $model = new Author();
 
@@ -90,7 +90,7 @@ class AuthorController extends Controller
     {
 	    if(Yii::$app->user->isGuest)
 	    {
-		    return $this->redirect(Yii::$app->homeUrl);
+		    throw new \yii\web\ForbiddenHttpException();
 	    }
         $model = $this->findModel($id);
 
@@ -114,7 +114,7 @@ class AuthorController extends Controller
     {
 	    if(Yii::$app->user->isGuest)
 	    {
-		    return $this->redirect(Yii::$app->homeUrl);
+		    throw new \yii\web\ForbiddenHttpException();
 	    }
         $this->findModel($id)->delete();
 
