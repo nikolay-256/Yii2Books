@@ -27,17 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
 			'columns'      => [
 				['class' => 'yii\grid\SerialColumn'],
 				'id',
-
 				[
 					'label'     => 'Author Id',
 					'attribute' => 'author_id',
 				],
 				[
-					'label' => 'Author',
-					'value' => 'author.name',
+					'label' => 'Author name',
+					'value' => function ($model) {
+						return $model->author->name;
+					},
 				],
 				'title',
-
 				['class' => 'yii\grid\ActionColumn'],
 			],
 		]
