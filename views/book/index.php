@@ -30,10 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
 				'id',
 				'title',
 				[
-					'class'   => 'yii\grid\ActionColumn',
-					'visible' => !Yii::$app->user->isGuest,
-				],
-				[
 					'label'     => 'Author Id',
 					'attribute' => 'author_id',
 				],
@@ -42,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
 					'value' => function ($model) {
 						return $model->author->name;
 					},
+				],
+				[
+					'class'   => 'yii\grid\ActionColumn',
+					'visible' => !Yii::$app->user->isGuest,
 				],
 			],
 		]
