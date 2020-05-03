@@ -12,27 +12,36 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="book-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+	<p>
+		<?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
+	</p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+	<?= GridView::widget(
+		[
+			'dataProvider' => $dataProvider,
+			'filterModel'  => $searchModel,
+			'columns'      => [
+				['class' => 'yii\grid\SerialColumn'],
+				'id',
 
-            'id',
-            'author_id',
-            'title',
+				[
+					'label'     => 'Author Id',
+					'attribute' => 'author_id',
+				],
+				[
+					'label' => 'Author',
+					'value' => 'author.name',
+				],
+				'title',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+				['class' => 'yii\grid\ActionColumn'],
+			],
+		]
+	); ?>
 
 
 </div>
