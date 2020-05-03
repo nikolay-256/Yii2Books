@@ -5,22 +5,22 @@
     <br>
 </p>
 
-install composer
+install composer:
 -------------------
 
       composer install
 
-create mysql db
+create mysql db:
 -------------------
 
       yii2books
       
-change mysql permissions in
+change mysql permissions in:
 -------------------
 
       /config/db.php
       
-run migrations
+run migrations:
 -------------------
 
       php yii migrate
