@@ -31,6 +31,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
 	        [
+		        'label' => 'Books count',
+		        'value' => function ($model) {
+			        return $model->getBooksCnt();
+		        },
+	        ],
+	        [
 		        'class'   => 'yii\grid\ActionColumn',
 		        'visible' => !Yii::$app->user->isGuest,
 	        ],

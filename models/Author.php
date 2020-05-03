@@ -52,4 +52,14 @@ class Author extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Book::className(), ['author_id' => 'id']);
     }
+    
+    /**
+     * Gets books count by current Author.
+     *
+     * @return int
+     */
+    public function getBooksCnt()
+    {
+        return Book::find()->where(['author_id' => $this->id])->count();
+    }
 }
