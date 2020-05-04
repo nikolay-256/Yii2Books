@@ -23,7 +23,7 @@ run migrations:
 
       ./yii migrate
       
-load initial fixtures:
+load initial data from fixtures:
 -------------------
 
       ./yii fixture/load '*' --namespace='app\tests\fixtures'
