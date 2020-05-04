@@ -11,9 +11,9 @@ install composer:
 create mysql db:
 -------------------
 
-      yii2books
+      create database yii2books;
       
-change mysql permissions in:
+change mysql permissions in file:
 -------------------
 
       /config/db.php
@@ -23,7 +23,12 @@ run migrations:
 
       ./yii migrate
       
-run in localhost:
+load initial fixtures:
+-------------------
+
+      ./yii fixture/load '*' --namespace='app\tests\fixtures'
+      
+starting web service:
 -------------------
 
       ./yii serve --port=8888
