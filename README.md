@@ -21,12 +21,12 @@ change mysql permissions in:
 run migrations:
 -------------------
 
-      php yii migrate
+      ./yii migrate
       
 run in localhost:
 -------------------
 
-      php yii serve --port=8888
+      ./yii serve --port=8888
       
 
 to edit data in the interface, you need to be logged in:
