@@ -1,9 +1,7 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <br>
-</p>
+
+<h1>Task YII2 books and authors</h1>
+<br>
+<a target="_blank" href="https://docs.google.com/document/d/1fH8vISNtM1VhBorSJbro3wzpdXmNmCtJrkKzbMySv3I/edit?usp=sharing">LINK TO TASK DESCRIPTION</a>
 
 install composer:
 -------------------
