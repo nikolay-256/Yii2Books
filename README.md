@@ -16,7 +16,7 @@ create mysql db:
 change mysql permissions in file:
 -------------------
 
-      /config/db.php
+      ./config/db.php
       
 run migrations:
 -------------------
